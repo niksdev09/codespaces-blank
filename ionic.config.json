@@ -1,0 +1,7 @@
+{
+  "name": "niks-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
