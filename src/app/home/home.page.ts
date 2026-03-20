@@ -38,7 +38,7 @@ export class HomePage {
       description: "Описание книги 2"
     }
   ];
-  btnClick: () => void = () => {
+  btnClick() {
     this.myName = this.myName + "!";
   }
 }
