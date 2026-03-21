@@ -32,10 +32,10 @@
         </ion-item>
       </ion-list>
     </ion-card-content>
+    <ion-button (click)="btnClick()">Добавить книгу</ion-button> 
   </ion-card>
 
 <!-- (dblclick)="btnClick2()" -->
-  <ion-button (click)="btnClick()">Добавить книгу</ion-button> 
 
   <ion-grid>
     <ion-row class="grid-header">
@@ -49,7 +49,7 @@
       <ion-col>{{ item1.author }}</ion-col>
       <ion-col>{{ item1.description }}</ion-col>
       <ion-col>
-        <ion-button>
+        <ion-button (click)="deleteBook(item1.id)" color="danger">
           <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
         </ion-button>
       </ion-col>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlertController, IonButton } from '@ionic/angular/standalone';
 
 interface Book {
   id: number | null;
@@ -15,7 +16,7 @@ interface Book {
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private alertController: AlertController) {}
   myName: string = "Никита"
   todo: string[] = [
     "Купить молоко",
@@ -51,7 +52,16 @@ export class HomePage {
       description: "Описание книги 3"
     }
   ];
-  btnClick() {
+  async btnClick() {
+    if (!this.newBook.title || !this.newBook.author || !this.newBook.description) {
+      const alert = await this.alertController.create({
+        header: 'Ошибка',
+        message: 'Вы должны заполнить все поля',
+        buttons: ['Ок'],
+      })
+      return await alert.present()
+    }
+
     this.books.push({
       id: this.books.length + 1,
       title: this.newBook.title,
@@ -69,4 +79,8 @@ export class HomePage {
   btnClick2() {
     this.myName = this.myName + "?";
   }
+  deleteBook(id: number | null) {
+    this.books = this.books.filter(book => book.id !== id);
+  }
+
 }
