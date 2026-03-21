@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 interface Book {
-  id: number;
+  id: number | null;
   title: string;
   author: string;
   description: string;
@@ -24,6 +24,13 @@ export class HomePage {
     "Пойти на тренировку",
     "Пойти спать"
   ]
+  newBook: Book = {
+    id: null,
+    title: "",
+    author: "",
+    description: ""
+  };
+
   books: Book[] = [
     {
       id: 1,
@@ -36,9 +43,30 @@ export class HomePage {
       title: "Книга 2",
       author: "Толстой Л.Н.",
       description: "Описание книги 2"
+    },
+    {
+      id: 3,
+      title: "Книга 3",
+      author: "Достоевский Ф.М.",
+      description: "Описание книги 3"
     }
   ];
   btnClick() {
-    this.myName = this.myName + "!";
+    this.books.push({
+      id: this.books.length + 1,
+      title: this.newBook.title,
+      author: this.newBook.author,
+      description: this.newBook.description
+    });
+    this.newBook = {
+      id: null,
+      title: "",
+      author: "",
+      description: ""
+    };
+
+  };
+  btnClick2() {
+    this.myName = this.myName + "?";
   }
 }
